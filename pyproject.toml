@@ -1,0 +1,16 @@
+[project]
+name = "umt-pythonweb-hw-08"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
+    "fastapi[standard]>=0.136.3",
+    "phonenumbers>=9.0.31",
+    "pydantic-extra-types>=2.11.1",
+    "pydantic-settings>=2.14.1",
+    "python-jose[cryptography]>=3.5.0",
+    "sqlalchemy>=2.0.50",
+]
