@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
 
 class Contact(Base):
     __tablename__ = "contacts"
-    __table_args__ = (UniqueConstraint("phone", "user_id", name="unique_phone_user"), )
+    __table_args__ = (UniqueConstraint("phone", "user_id", name="unique_phone_user"),)
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     first_name: Mapped[str] = mapped_column(String(100), nullable=False)
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
@@ -19,7 +19,9 @@ class Contact(Base):
     phone: Mapped[str] = mapped_column(String(100), nullable=False)
     date_of_birth: Mapped[date] = mapped_column(Date)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now())
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), default=None)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), default=None
+    )
 
     user = relationship("User", backref="contacts")
 
