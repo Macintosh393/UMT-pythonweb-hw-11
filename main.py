@@ -16,9 +16,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
-    return JSONResponse(status_code=status.HTTP_429_TOO_MANY_REQUESTS, content={"error": "Rate limit exceeded. Try again later"})
+    return JSONResponse(
+        status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+        content={"error": "Rate limit exceeded. Try again later"},
+    )
+
 
 app.include_router(utils.router, prefix="/api")
 app.include_router(contacts.router, prefix="/api")

@@ -67,3 +67,13 @@ async def get_current_user(
         raise credentials_exeption
 
     return user
+
+
+async def create_email_token(data: dict):
+    to_encode = data.copy()
+    now = datetime.now(UTC)
+    expire = now + timedelta(days=7)
+    to_encode.update({"iat": now, "exp": expire})
+
+    token = jwt.encode(to_encode, config.JWT_SECRET, algorithm=config.JWT_ALGORITHM)
+    return token
