@@ -63,7 +63,7 @@ async def get_contact(
     return contact
 
 
-@router.post("/", response_model=ContactResponse)
+@router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED)
 async def create_contact(
     body: ContactModel,
     db: AsyncSession = Depends(get_db),

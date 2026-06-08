@@ -78,7 +78,7 @@ async def login_user(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.get("confirm_email/{token}")
+@router.get("/confirm_email/{token}")
 async def confirm_email(token: str, db: AsyncSession = Depends(get_db)):
     email = await get_email_from_token(token)
 
