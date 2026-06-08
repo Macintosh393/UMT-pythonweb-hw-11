@@ -1,11 +1,12 @@
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
+from typing import Optional
 
 
 class UserResponse(BaseModel):
     id: int
     username: str = Field(min_length=2, max_length=100)
     email: EmailStr
-    avatar: str
+    avatar_url: Optional[str] = None
 
     model_config = ConfigDict(from_attributes=True)
 
