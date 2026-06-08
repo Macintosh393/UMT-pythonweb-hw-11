@@ -25,8 +25,8 @@ class Config(BaseSettings):
     VALIDATE_CERTS: bool = True
 
     CLD_NAME: str = ""
-    CLD_API_KEY: int = 0
-    CLD_API_SECRET: str = "secret"
+    CLD_API_KEY: str = ""
+    CLD_API_SECRET: str = ""
 
     model_config = SettingsConfigDict(
         extra="ignore",
